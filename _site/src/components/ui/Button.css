@@ -1,0 +1,100 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast),
+    filter var(--transition-base);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn--sm {
+  min-height: 2.25rem;
+  padding-inline: var(--space-4);
+  font-size: var(--text-sm);
+}
+
+.btn--md {
+  min-height: 2.75rem;
+  padding-inline: var(--space-5);
+  font-size: var(--text-base);
+}
+
+.btn--lg {
+  min-height: 3.375rem;
+  padding-inline: var(--space-8);
+  font-size: var(--text-lg);
+  border-radius: var(--radius-lg);
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-secondary);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn--secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-text-inverse);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-primary);
+}
+
+.btn--accent {
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
+}
+
+.btn--accent:hover {
+  filter: brightness(0.94);
+  box-shadow: var(--shadow-accent);
+}
+
+.btn--ghost {
+  background-color: transparent;
+  border-color: var(--color-border-strong);
+  color: var(--color-primary);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-bg-muted);
+}
+
+@media (hover: hover) {
+  .btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+
+  .btn:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}

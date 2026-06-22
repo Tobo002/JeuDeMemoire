@@ -1,0 +1,102 @@
+.selector-group {
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.selector-group__legend {
+  padding: 0;
+  margin-bottom: var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.selector-group__options {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.selector-group--compact .selector-group__options {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.selector-option {
+  display: block;
+  cursor: pointer;
+}
+
+.selector-group--disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.selector-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.selector-option__surface {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: var(--space-3) var(--space-4);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  transition:
+    border-color var(--transition-base),
+    background-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.selector-group--compact .selector-option__surface {
+  align-items: center;
+  text-align: center;
+  padding: var(--space-3);
+}
+
+.selector-option__label {
+  font-size: var(--text-sm);
+  font-weight: 650;
+  color: var(--color-primary);
+}
+
+.selector-group--compact .selector-option__label {
+  font-size: var(--text-xs);
+}
+
+.selector-option__detail {
+  font-size: var(--text-xs);
+  color: var(--color-text-soft);
+  line-height: var(--leading-snug);
+}
+
+@media (hover: hover) {
+  .selector-option:hover .selector-option__surface {
+    border-color: var(--color-accent);
+    transform: translateY(-1px);
+  }
+}
+
+.selector-option input:focus-visible + .selector-option__surface {
+  box-shadow: var(--focus-ring);
+}
+
+.selector-option input:checked + .selector-option__surface {
+  border-color: var(--color-primary);
+  background: var(--color-primary-soft);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 480px) {
+  .selector-group--compact .selector-group__options {
+    grid-template-columns: 1fr;
+  }
+}

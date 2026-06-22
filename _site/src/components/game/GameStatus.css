@@ -1,0 +1,51 @@
+.game-status {
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-muted);
+  text-align: center;
+  transition:
+    border-color var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.game-status__message {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.game-status__feedback {
+  margin-top: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.game-status--listen {
+  border-color: var(--color-accent-soft);
+  background: var(--color-accent-softer);
+}
+
+.game-status--listen .game-status__message {
+  color: var(--color-text-on-accent);
+}
+
+.game-status--success {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.game-status--success .game-status__feedback {
+  color: var(--color-text-on-accent);
+}
+
+.game-status--error {
+  border-color: var(--color-secondary);
+  background: var(--color-secondary-soft);
+}
+
+.game-status--error .game-status__feedback {
+  color: var(--color-primary);
+}

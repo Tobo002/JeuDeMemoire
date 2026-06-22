@@ -1,0 +1,57 @@
+/* Shared interactive note states */
+.instrument {
+  width: 100%;
+}
+
+.instrument-note {
+  position: relative;
+}
+
+.instrument-note--active {
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  color: var(--color-text-on-accent) !important;
+  box-shadow: var(--shadow-accent);
+}
+
+.instrument-note--answer {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.instrument-note--wrong {
+  background: var(--color-secondary) !important;
+  border-color: var(--color-secondary) !important;
+  color: var(--color-text-inverse) !important;
+  box-shadow: 0 0 0 3px var(--color-secondary-soft);
+}
+
+.instrument-note--input {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 1px;
+}
+
+.instrument-note--latest {
+  transform: scale(0.97);
+}
+
+.instrument-note:not(:disabled) {
+  cursor: pointer;
+}
+
+.instrument-note:disabled {
+  cursor: default;
+}
+
+.instrument-note:not(:disabled):hover {
+  border-color: var(--color-accent);
+}
+
+.fretboard__fret.instrument-note--answer .fretboard__dot {
+  background: var(--color-primary);
+  border: 2px solid var(--color-bg-elevated);
+}
+
+.fretboard__fret.instrument-note--active .fretboard__dot {
+  background: var(--color-accent);
+}

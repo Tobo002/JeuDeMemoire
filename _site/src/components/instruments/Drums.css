@@ -1,0 +1,70 @@
+.drums__kit {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--space-4);
+  width: min(100%, 24rem);
+  margin-inline: auto;
+}
+
+.drums__pad {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 5rem;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-bg-muted);
+  font-size: var(--text-xs);
+  font-weight: 650;
+  color: var(--color-primary);
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.drums__pad--kick,
+.drums__pad--snare {
+  border-radius: var(--radius-lg);
+}
+
+.drums__pad--kick {
+  grid-column: span 1;
+}
+
+.drums__pad--crash {
+  border-radius: var(--radius-full);
+  background: radial-gradient(
+    circle at 30% 30%,
+    var(--color-bg-elevated) 0%,
+    var(--color-bg-muted) 70%
+  );
+}
+
+.drums__pad:not(:disabled):hover {
+  transform: scale(1.04);
+}
+
+.drums__pad.instrument-note--active {
+  transform: scale(1.06);
+}
+
+.drums__label {
+  text-align: center;
+  line-height: 1.2;
+  padding: var(--space-2);
+}
+
+@media (max-width: 520px) {
+  .drums__kit {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .drums__pad {
+    grid-row: auto !important;
+    grid-column: auto !important;
+  }
+}

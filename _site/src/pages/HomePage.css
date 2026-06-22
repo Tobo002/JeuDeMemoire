@@ -1,0 +1,166 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  padding-bottom: var(--space-16);
+}
+
+/* Hero */
+.home-hero {
+  padding-top: var(--space-8);
+}
+
+.home-hero__inner {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.home-hero__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 36rem;
+}
+
+.home-hero__title {
+  max-width: 12ch;
+}
+
+.home-hero__description {
+  max-width: 34rem;
+}
+
+.home-hero__actions {
+  padding-top: var(--space-4);
+}
+
+.home-hero__accent {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 24rem;
+}
+
+.home-hero__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+}
+
+.home-hero__ring--one {
+  width: 18rem;
+  height: 18rem;
+  background: radial-gradient(
+    circle,
+    var(--color-accent-softer) 0%,
+    transparent 70%
+  );
+}
+
+.home-hero__ring--two {
+  width: 12rem;
+  height: 12rem;
+  border-color: var(--color-secondary-soft);
+  background: var(--color-primary-soft);
+}
+
+.home-hero__note-stack {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.home-hero__floating-note {
+  display: grid;
+  place-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-primary);
+  animation: float-note 4s ease-in-out infinite;
+  animation-delay: var(--delay, 0ms);
+}
+
+.home-hero__floating-note:nth-child(2) {
+  margin-left: var(--space-12);
+}
+
+.home-hero__floating-note:nth-child(3) {
+  margin-left: var(--space-6);
+}
+
+@keyframes float-note {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Instruments section */
+.home-instruments__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 36rem;
+  margin-bottom: var(--space-12);
+}
+
+.home-instruments__intro {
+  max-width: 32rem;
+}
+
+.home-instruments__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 1024px) {
+  .home-hero__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .home-hero__accent {
+    order: -1;
+    min-height: 16rem;
+  }
+
+  .home-hero__title {
+    max-width: none;
+  }
+
+  .home-instruments__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-page {
+    gap: var(--space-16);
+  }
+
+  .home-hero__floating-note:nth-child(2),
+  .home-hero__floating-note:nth-child(3) {
+    margin-left: var(--space-8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero__floating-note {
+    animation: none;
+  }
+}

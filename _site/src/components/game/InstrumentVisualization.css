@@ -1,0 +1,135 @@
+.instrument-viz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.instrument-viz__frame {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 22rem;
+  padding: var(--space-8) var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  background:
+    radial-gradient(circle at 50% 0%, var(--color-accent-softer) 0%, transparent 45%),
+    var(--color-bg-elevated);
+  box-shadow: var(--shadow-md);
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.instrument-viz__frame--success {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-accent);
+}
+
+.instrument-viz__frame--error {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px var(--color-secondary-soft);
+}
+
+/* Note name display (Advanced playback) */
+.viz-note-name {
+  display: grid;
+  place-items: center;
+  min-height: 10rem;
+  width: 100%;
+}
+
+.viz-note-name__value {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 12vw, 7rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-primary);
+  animation: note-pop 0.35s ease;
+}
+
+.viz-note-name__placeholder {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  color: var(--color-text-soft);
+}
+
+@keyframes note-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Audio only (Expert playback) */
+.viz-audio-only {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.viz-audio-only__rings {
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+}
+
+.viz-audio-only__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  animation: audio-pulse 1.8s ease-out infinite;
+}
+
+.viz-audio-only__ring:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.viz-audio-only__ring:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+.viz-audio-only__label {
+  font-size: var(--text-sm);
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+@keyframes audio-pulse {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .instrument-viz__frame {
+    min-height: 16rem;
+    padding: var(--space-5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viz-note-name__value {
+    animation: none;
+  }
+
+  .viz-audio-only__ring {
+    animation: none;
+    opacity: 0.35;
+  }
+}

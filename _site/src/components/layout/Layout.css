@@ -1,0 +1,40 @@
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+.app-main {
+  flex: 1;
+  padding-block: var(--space-8);
+}
+
+.app-main:has(.game-page) {
+  padding-block: var(--space-6);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100%;
+  z-index: 200;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+@media (max-width: 768px) {
+  .app-main {
+    padding-block: var(--space-6);
+  }
+}

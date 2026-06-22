@@ -1,0 +1,118 @@
+.piano__keyboard {
+  position: relative;
+  width: min(100%, 32rem);
+  margin-inline: auto;
+}
+
+.piano__whites {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  height: 11rem;
+}
+
+.piano__key--white {
+  position: relative;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-soft);
+  font-size: var(--text-xs);
+  font-weight: 650;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.piano__label {
+  position: absolute;
+  bottom: var(--space-3);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.piano__key--white .sequence-orders {
+  top: auto;
+  right: auto;
+  left: 50%;
+  bottom: calc(var(--space-3) + 0.85rem + var(--space-2));
+  transform: translateX(-50%);
+  flex-wrap: nowrap;
+  justify-content: center;
+  max-width: 90%;
+  z-index: 2;
+}
+
+.piano__blacks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 62%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.piano__key--black {
+  position: absolute;
+  top: 0;
+  width: 9%;
+  height: 100%;
+  overflow: visible;
+  border: 1px solid var(--color-text);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  background: var(--color-text);
+  pointer-events: auto;
+  z-index: 3;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.piano__key--black .sequence-orders {
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  flex-wrap: nowrap;
+  justify-content: center;
+  max-width: 92%;
+  z-index: 5;
+}
+
+.piano__key--black .sequence-orders__badge {
+  min-width: 1.1rem;
+  height: 1.1rem;
+  font-size: 0.58rem;
+}
+
+.piano__key--black.instrument-note--active {
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: var(--shadow-accent);
+}
+
+.piano__key--after-c { left: 9%; }
+.piano__key--after-d { left: 23%; }
+.piano__key--after-f { left: 51%; }
+.piano__key--after-g { left: 65%; }
+.piano__key--after-a { left: 79%; }
+
+.piano__key--white:not(:disabled):hover {
+  transform: translateY(2px);
+}
+
+.piano__key--black:not(:disabled):hover {
+  transform: translateY(1px);
+}
+
+.piano__key.instrument-note--active {
+  transform: translateY(3px);
+}

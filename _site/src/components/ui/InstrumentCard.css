@@ -1,0 +1,146 @@
+.instrument-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-height: 16rem;
+  padding: var(--space-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-elevated);
+  overflow: hidden;
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.instrument-card__glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.instrument-card--primary .instrument-card__glow {
+  background: radial-gradient(
+    circle at 80% 20%,
+    var(--color-secondary-soft) 0%,
+    transparent 55%
+  );
+}
+
+.instrument-card--secondary .instrument-card__glow {
+  background: radial-gradient(
+    circle at 20% 80%,
+    var(--color-primary-soft) 0%,
+    transparent 55%
+  );
+}
+
+.instrument-card--accent .instrument-card__glow {
+  background: radial-gradient(
+    circle at 50% 100%,
+    var(--color-accent-soft) 0%,
+    transparent 60%
+  );
+}
+
+.instrument-card__icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-muted);
+  color: var(--color-primary);
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-base);
+}
+
+.instrument-card--accent .instrument-card__icon {
+  background: var(--color-accent-soft);
+}
+
+.instrument-card__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+.instrument-card__name {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.instrument-card__description {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+}
+
+.instrument-card__wave {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.35rem;
+  height: 2.5rem;
+}
+
+.instrument-card__wave span {
+  flex: 1;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-soft);
+  transform-origin: bottom;
+  transition: transform var(--transition-base);
+}
+
+.instrument-card__wave span:nth-child(1) { height: 35%; }
+.instrument-card__wave span:nth-child(2) { height: 65%; }
+.instrument-card__wave span:nth-child(3) { height: 100%; }
+.instrument-card__wave span:nth-child(4) { height: 50%; }
+.instrument-card__wave span:nth-child(5) { height: 80%; }
+
+@media (hover: hover) {
+  .instrument-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .instrument-card:hover .instrument-card__glow {
+    opacity: 1;
+  }
+
+  .instrument-card:hover .instrument-card__icon {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    transform: scale(1.05);
+  }
+
+  .instrument-card--accent:hover .instrument-card__icon {
+    background: var(--color-accent);
+    color: var(--color-text-on-accent);
+  }
+
+  .instrument-card:hover .instrument-card__wave span {
+    background: var(--color-accent);
+  }
+
+  .instrument-card:hover .instrument-card__wave span:nth-child(1) { transform: scaleY(1.15); }
+  .instrument-card:hover .instrument-card__wave span:nth-child(2) { transform: scaleY(0.9); }
+  .instrument-card:hover .instrument-card__wave span:nth-child(3) { transform: scaleY(1.2); }
+  .instrument-card:hover .instrument-card__wave span:nth-child(4) { transform: scaleY(0.85); }
+  .instrument-card:hover .instrument-card__wave span:nth-child(5) { transform: scaleY(1.1); }
+}
